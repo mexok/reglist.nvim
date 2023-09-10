@@ -42,7 +42,7 @@ function M.pop()
         return
     end
     local reglist = vim.g.REGLIST
-    vim.fn.setreg('\"', reglist[#reglist-1])
+    vim.fn.setreg('\"', reglist[#reglist])
     table.remove(reglist)
     vim.g.REGLIST = reglist
 end
