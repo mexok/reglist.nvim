@@ -114,7 +114,12 @@ function M.export()
 end
 
 function M.print(index)
-    print(index..'-'..M.get_name(index)..': '..M.trim_newline(vim.g.REGLIST[index]))
+    local reg = M.get_name(index)
+    if reg == nil then
+        print(index..': '..M.trim_newline(vim.g.REGLIST[index]))
+    else
+        print(index..'-'..M.get_name(index)..': '..M.trim_newline(vim.g.REGLIST[index]))
+    end
 end
 
 function M.glob()
