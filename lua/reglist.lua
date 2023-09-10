@@ -41,11 +41,8 @@ function M.pop()
         print("Error: Reglist is empty")
         return
     end
-    local reg = M.get_name(#vim.g.REGLIST)
-    if reg ~= nil then
-        vim.fn.setreg('\"', vim.fn.getreg(reg))
-    end
     local reglist = vim.g.REGLIST
+    vim.fn.setreg('\"', reglist[#reglist-1])
     table.remove(reglist)
     vim.g.REGLIST = reglist
 end
