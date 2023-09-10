@@ -56,18 +56,15 @@ function M.shift()
         return
     end
     local reglist = vim.g.REGLIST
-    local reg = M.get_name(1)
-    if reg ~= nil then
-        vim.fn.setreg('\"', vim.fn.getreg(reg))
-    end
+    vim.fn.setreg('\"', reglist[1])
     for i = 2, #reglist do
-        reg = M.get_name(i-1)
+        local reg = M.get_name(i-1)
         if reg ~= nil then
             vim.fn.setreg(reg, reglist[i])
         end
         reglist[i-1] = reglist[i]
     end
-    table.remove(reglist, 1)
+    table.remove(reglist)
     vim.g.REGLIST = reglist
 end
 
